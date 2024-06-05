@@ -1,0 +1,16 @@
+{% extends 'components/layout.html' %}
+{% load static %}
+
+{% block content %}
+	<h2>
+		Видеозаписи
+	</h2>
+	{% for video in videos %}
+		<h3>
+			{{ video.name }}
+		</h3>
+		<video width="400px" controls src="{{ video.video_file.url }}"></video>
+	{% empty %}
+		Не найдено ни одной видеозаписи.
+	{% endfor %}
+{% endblock %}

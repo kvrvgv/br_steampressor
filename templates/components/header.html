@@ -1,0 +1,36 @@
+{% load static %}
+
+<div class="header-wrapper">
+	<header>
+		<a class="navLogo" href="{% url 'index' %}">
+			<img src="{% static 'img/Logo.png' %}" alt="Logo">
+		</a>
+		<a href="{% url 'index' %}">
+			Главная
+		</a>
+		<a href="{% url 'about' %}">
+			О нас
+		</a>
+		<a href="{% url 'contacts' %}">
+			Контакты
+		</a>
+		<a href="{% url 'video' %}">
+			Видео
+		</a>
+		<a href="{% url 'poll' %}">
+			Обратная связь
+		</a>
+		{% if user.is_authenticated %}
+			<a href="{% url 'profile' %}" style="margin-left: auto">
+				{{ user.username }}
+			</a>
+			<a href="{% url 'logout' %}">
+				Выйти
+			</a>
+		{% else %}
+			<a style="margin-left: auto" href="{% url 'login' %}">
+				Войти
+			</a>
+		{% endif %}
+	</header>
+</div>

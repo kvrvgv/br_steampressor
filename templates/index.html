@@ -1,0 +1,22 @@
+{% extends 'components/layout.html' %}
+{% load static %}
+
+{% block content %}
+	<h1>
+		Главная
+	</h1>
+	{% for post in posts %}
+		<div class="post">
+			<img src="{{ post.image.url }}" alt="{{ post.title }}">
+			<a class="postText" href="{% url 'post' id_=post.id %}">
+				<h4>
+					{{ post.author }}: {{ post.title }} ({{ post.date_created }})
+				</h4>
+				{{ post.description }}
+			</a>
+		</div>
+	{% empty %}
+		Постов ещё нет
+	{% endfor %}
+	
+{% endblock %}

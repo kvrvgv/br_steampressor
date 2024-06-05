@@ -1,0 +1,11 @@
+{% extends 'components/base.html' %}
+
+{% block body %}
+{% include 'components/header.html' %}
+	<div class="main-wrapper">
+		<main>
+			{% block content %}
+			{% endblock %}
+		</main>
+	</div>
+{% endblock %}

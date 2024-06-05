@@ -1,0 +1,21 @@
+{% extends 'components/layout.html' %}
+{% load static %}
+
+{% block content %}
+	<h1>
+		Регистрация
+	</h1>
+	<form class="feedbackForm" method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class="authSubmit" type="submit">
+			Зарегистрироваться
+		</button>
+	</form>
+	<h3 class="feedbackForm">
+		<a href="{% url 'login' %}">
+			У вас уже есть аккаунт?
+			Войти
+		</a>
+	</h3>
+{% endblock %}

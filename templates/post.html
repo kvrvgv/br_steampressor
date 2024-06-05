@@ -1,0 +1,46 @@
+{% extends 'components/layout.html' %}
+{% load static %}
+
+{% block content %}
+	<h2>
+		{{ blog_post.author }}: 
+		{{ blog_post.title }}
+		({{ blog_post.date_created }})
+	</h2>
+	<img class="post" src="{{ blog_post.image.url }}" alt="{{ post.title }}">
+	<p>
+		{{ blog_post.content }}
+	</p>
+
+	<h2>
+		Комментарии
+	</h2>
+	{% for comment in comments %}
+		<div>
+			<h5>
+				{{ comment.author }}
+				({{ comment.date_created }})
+			</h5>
+		{{ comment.text }}
+		</div>
+	{% empty %}
+		Комментариев ещё нет
+	{% endfor %}
+
+	{% if user.is_authenticated %}
+		<form class="authForm" method="POST">
+			<h2>
+				Оставить комментарий
+			</h2>
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit" class="submitButton">
+				Отправить
+			</button>
+		</form>
+	{% else %}
+		<a class="submitButton" href="{% url 'login' %}">
+			Войдите, чтобы оставить комментарий
+		</a>
+	{% endif %}
+{% endblock %}

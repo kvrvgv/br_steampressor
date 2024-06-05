@@ -1,0 +1,41 @@
+{% extends 'components/layout.html' %}
+{% load static %}
+
+{% block content %}
+	{% if post %}
+		{% if success %}
+			<h1 style="color: green">Успешно отправлено!</h1>
+		{% else %}
+			<h1 style="color: red">Возникла ошибка! Попробуйте ещё раз.</h1>
+		{% endif %}
+	{% endif %}
+	<h2>
+		Обратная связь
+	</h2>
+	<form method="POST" class="feedbackForm">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button id="submitButton" class="submitButton" type="submit">
+			Отправить
+		</button>
+	</form>
+	<script>
+		let submitButton = document.getElementById("submitButton");
+        submitButton.onmouseover = () => {
+            submitButton.style.backgroundColor = "#008000";
+		}
+        submitButton.onmouseleave = () => {
+            submitButton.style.backgroundColor = "#FFA500";
+		}
+
+    	["id_name", "id_email", "id_message"].forEach((value) => {
+    	    let input = document.getElementById(value);
+			input.onfocus = () => {
+				input.style.backgroundColor = "#FFA5003F";
+			}
+			input.onblur = () => {
+				input.style.backgroundColor = "#FFF";
+			}
+		})
+	</script>
+{% endblock %}

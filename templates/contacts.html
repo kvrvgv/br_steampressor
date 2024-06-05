@@ -1,0 +1,28 @@
+{% extends 'components/layout.html' %}
+{% load static %}
+
+{% block content %}
+	<h2>
+		Контакты
+	</h2>
+	<ul class="linksList">
+		<li>
+			<a class="linkImage" href="https://vk.com/steampressor">
+				<img src="{% static 'img/icons/vk.webp' %}" alt="Вконтакте">
+				Вконтакте
+			</a>
+		</li>
+		<li>
+			<a class="linkImage" href="https://youtube.com/steampressor">
+				<img src="{% static 'img/icons/yt.png' %}" alt="YouTube">
+				YouTube
+			</a>
+		</li>
+		<li>
+			<a class="linkImage" href="https://t.me/steampressor">
+				<img src="{% static 'img/icons/tg.webp' %}" alt="Telegram">
+				Telegram
+			</a>
+		</li>
+	</ul>
+{% endblock %}

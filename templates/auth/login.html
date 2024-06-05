@@ -1,0 +1,24 @@
+{% extends 'components/layout.html' %}
+{% load static %}
+
+{% block content %}
+	<h1>
+		Авторизация
+	</h1>
+	<form class="feedbackForm" method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class="authSubmit" type="submit">
+			Войти
+		</button>
+	</form>
+	<h3 class="feedbackForm">
+		<a href="{% url 'signup' %}">
+			У вас ещё нет аккаунта?
+			Зарегистрироваться
+		</a>
+	</h3>
+	{% if not success %}
+		Пользователя с таким именем не существует или пароль не совпадает. Попробуйте ещё раз
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'components/layout.html' %}
+{% load static %}
+
+{% block content %}
+	<h2>
+		Профиль {{ user }}
+	</h2>
+	{% if user.is_superuser %}
+		<h2>
+			Создание статьи блога
+		</h2>
+		<form class="feedbackForm" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit" class="submitButton">
+				Опубликовать
+			</button>
+		</form>
+	{% else %}
+		Вы не можете создавать посты, так как не являетесь супер-пользователем
+	{% endif %} 
+{% endblock %}
